@@ -3,44 +3,57 @@ const OBR = window.OBR;
 let currentTokenId = null;
 
 /* =========================
-   CONTEXT MENU
+   WHEN EXTENSION IS READY
 ========================= */
 
-OBR.contextMenu.create({
-  id: "attach-lantern",
-  icons: [{ icon: "/icon.svg", label: "Lantern" }],
-  filter: {
-    every: [{ key: "layer", value: "CHARACTER" }]
-  },
-  onClick: async (context) => {
-    const id = context.items[0];
-    currentTokenId = id;
+OBR.onReady(async () => {
 
-    const [item] = await OBR.items.getItems([id]);
+  /* =========================
+     CONTEXT MENU (RIGHT CLICK)
+  ========================= */
 
-    await OBR.items.updateItems([{
-      id,
-      metadata: {
-        lantern: {
+  OBR.contextMenu.register({
+    id: "lantern.attach",
+    label: "Attach Lantern",
+    icon: "/icon.svg",
+
+    filter: {
+      every: [
+        { key: "layer", operator: "==", value: "CHARACTER" }
+      ]
+    },
+
+    onClick: async (context) => {
+      const tokenId = context.items[0];
+      currentTokenId = tokenId;
+
+      const [token] = await OBR.items.getItems([tokenId]);
+
+      await OBR.items.updateItems([{
+        id: tokenId,
+        light: {
           enabled: true,
           radius: 6,
+          falloff: 0.5,
           intensity: 1
+        },
+        metadata: {
+          lantern: {
+            enabled: true,
+            radius: 6,
+            intensity: 1
+          }
         }
-      },
-      light: {
-        enabled: true,
-        radius: 6,
-        falloff: 0.5,
-        intensity: 1
-      }
-    }]);
+      }]);
 
-    updateUI(item.name);
-  }
+      updateUI(token.name);
+    }
+  });
+
 });
 
 /* =========================
-   UI
+   UI ELEMENTS
 ========================= */
 
 const tokenName = document.getElementById("tokenName");
@@ -48,53 +61,10 @@ const radius = document.getElementById("radius");
 const intensity = document.getElementById("intensity");
 const removeBtn = document.getElementById("remove");
 
+/* =========================
+   UI FUNCTIONS
+========================= */
+
 function updateUI(name) {
   tokenName.textContent = `Token: ${name}`;
-  removeBtn.disabled = false;
-}
-
-/* =========================
-   UPDATE LIGHT
-========================= */
-
-async function updateLantern() {
-  if (!currentTokenId) return;
-
-  await OBR.items.updateItems([{
-    id: currentTokenId,
-    light: {
-      enabled: true,
-      radius: Number(radius.value),
-      falloff: 0.5,
-      intensity: Number(intensity.value)
-    },
-    metadata: {
-      lantern: {
-        enabled: true,
-        radius: Number(radius.value),
-        intensity: Number(intensity.value)
-      }
-    }
-  }]);
-}
-
-radius.addEventListener("input", updateLantern);
-intensity.addEventListener("input", updateLantern);
-
-/* =========================
-   REMOVE
-========================= */
-
-removeBtn.onclick = async () => {
-  if (!currentTokenId) return;
-
-  await OBR.items.updateItems([{
-    id: currentTokenId,
-    light: { enabled: false },
-    metadata: { lantern: { enabled: false } }
-  }]);
-
-  tokenName.textContent = "No token selected";
-  currentTokenId = null;
-  removeBtn.disabled = true;
-};
+  removeBtn.disabled = fa
