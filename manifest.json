@@ -1,20 +1,10 @@
 {
-  "name": "Fog & Lantern Controller",
-  "version": "1.3.0",
+  "name": "Lantern Tool",
+  "version": "1.0.0",
   "manifest_version": 1,
-  "author": "vinizzwyzoo",
-  "description": "Attach lanterns to tokens",
   "icon": "/icon.svg",
 
   "background": {
     "page": "/background.html"
-  },
-
-  "action": {
-    "title": "Lantern",
-    "icon": "/icon.svg",
-    "popover": "/index.html",
-    "width": 340,
-    "height": 360
   }
 }
