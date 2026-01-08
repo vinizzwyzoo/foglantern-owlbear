@@ -1,26 +1,25 @@
 const OBR = window.OBR;
 
 OBR.onReady(() => {
-  OBR.contextMenu.register({
-    id: "lantern.attach",
-    label: "Attach Lantern",
-    icon: "/icon.svg",
+  console.log("Fog Lantern loaded");
 
-    filter: {
-      every: [
-        { key: "layer", operator: "==", value: "CHARACTER" }
-      ]
-    },
+  OBR.contextMenu.register({
+    id: "lantern.test",
+    label: "TEST MENU",
 
     onClick: async (ctx) => {
-      const tokenId = ctx.items[0];
+      console.log("Clicked!", ctx);
+
+      if (!ctx.items || ctx.items.length === 0) return;
+
+      const id = ctx.items[0];
 
       await OBR.items.updateItems([{
-        id: tokenId,
+        id,
         light: {
           enabled: true,
           radius: 6,
-          falloff: 0.5,
+          falloff: 0.4,
           intensity: 1
         }
       }]);
