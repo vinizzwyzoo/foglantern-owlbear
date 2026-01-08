@@ -1,36 +1,51 @@
-import OBR from "@owlbear-rodeo/sdk";
+const OBR = window.OBR;
 
-OBR.onReady(() => {
-  const fogSlider = document.getElementById("fogOpacity");
-  const applyFog = document.getElementById("applyFog");
-  const addLantern = document.getElementById("addLantern");
+/* =========================
+   FOG OPACITY
+========================= */
 
-  applyFog.onclick = async () => {
-    const opacity = parseFloat(fogSlider.value);
-    await OBR.scene.fog.setOpacity(opacity);
-  };
+async function setFogOpacity(opacity) {
+  const scene = await OBR.scene.getScene();
 
-  addLantern.onclick = async () => {
-    const selected = await OBR.interaction.getSelectedItems();
-
-    for (const item of selected) {
-      if (item.type !== "TOKEN") continue;
-
-      await OBR.scene.items.addItems([
-        {
-          id: crypto.randomUUID(),
-          type: "LIGHT",
-          position: item.position,
-          visible: true,
-          locked: false,
-          light: {
-            radius: 6,
-            intensity: 1,
-            falloff: 0.6,
-            color: "#f8e16c"
-          }
-        }
-      ]);
+  await OBR.scene.updateScene({
+    fog: {
+      ...scene.fog,
+      opacity: opacity
     }
-  };
-});
+  });
+}
+
+document
+  .getElementById("fogOpacity")
+  .addEventListener("input", (e) => {
+    setFogOpacity(Number(e.target.value));
+  });
+
+/* =========================
+   LANTERNS
+========================= */
+
+async function addLantern() {
+  const selected = await OBR.player.getSelection();
+
+  if (!selected.length) {
+    alert("Select a token first!");
+    return;
+  }
+
+  await OBR.items.updateItems(
+    selected.map(id => ({
+      id,
+      light: {
+        enabled: true,
+        radius: 6,
+        falloff: 0.5,
+        intensity: 1
+      }
+    }))
+  );
+}
+
+document
+  .getElementById("addLantern")
+  .addEventListener("click", addLantern);
