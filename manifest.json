@@ -7,7 +7,7 @@
   "icon": "/icon.svg",
 
   "background": {
-    "page": "/background.js"
+    "page": "/background.html"
   },
 
   "action": {
