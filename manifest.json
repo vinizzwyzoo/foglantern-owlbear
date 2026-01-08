@@ -1,0 +1,15 @@
+{
+  "name": "Fog & Lantern Controller",
+  "version": "1.0.2",
+  "manifest_version": 1,
+  "author": "vinizzwyzoo",
+  "icon": "/icon.svg",
+  "description": "Control fog opacity and create lantern light sources",
+  "action": {
+    "title": "Fog & Lanterns",
+    "icon": "/icon.svg",
+    "popover": "/ui.html",
+    "width": 320,
+    "height": 320
+  }
+}
