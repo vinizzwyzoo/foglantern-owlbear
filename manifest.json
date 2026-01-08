@@ -1,10 +1,15 @@
 {
   "name": "Fog & Lantern Controller",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "manifest_version": 1,
   "author": "vinizzwyzoo",
-  "description": "Attach lanterns to tokens and control fog",
+  "description": "Attach lanterns to tokens",
   "icon": "/icon.svg",
+
+  "background": {
+    "page": "/background.js"
+  },
+
   "action": {
     "title": "Lantern",
     "icon": "/icon.svg",
