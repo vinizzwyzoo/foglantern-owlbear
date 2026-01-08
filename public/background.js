@@ -13,10 +13,10 @@ OBR.onReady(() => {
     },
 
     onClick: async (ctx) => {
-      const id = ctx.items[0];
+      const tokenId = ctx.items[0];
 
       await OBR.items.updateItems([{
-        id,
+        id: tokenId,
         light: {
           enabled: true,
           radius: 6,
