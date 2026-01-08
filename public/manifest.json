@@ -1,10 +1,10 @@
 {
-  "name": "Fog Lantern",
+  "name": "Fog Lantern TEST",
   "version": "1.0.0",
   "manifest_version": 1,
   "author": "vinizzwyzoo",
-  "description": "Attach lanterns via right click",
   "icon": "/icon.svg",
+  "description": "Test context menu",
 
   "action": {
     "title": "Lantern",
