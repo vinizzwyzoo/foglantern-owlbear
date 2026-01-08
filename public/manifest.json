@@ -1,21 +1,16 @@
 {
-  "name": "Fog & Lantern Controller",
+  "name": "Fog Lantern",
   "version": "1.0.0",
   "manifest_version": 1,
   "author": "vinizzwyzoo",
-  "description": "Attach lanterns to tokens via right click",
+  "description": "Attach lanterns via right click",
   "icon": "/icon.svg",
 
-  "entrypoints": {
-    "background": {
-      "page": "/background.html"
-    },
-    "action": {
-      "title": "Lantern",
-      "icon": "/icon.svg",
-      "popover": "/index.html",
-      "width": 340,
-      "height": 360
-    }
+  "action": {
+    "title": "Lantern",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "width": 1,
+    "height": 1
   }
 }
