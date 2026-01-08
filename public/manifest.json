@@ -1,0 +1,10 @@
+{
+  "name": "Lantern Tool",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "icon": "/icon.svg",
+
+  "background": {
+    "page": "/background.html"
+  }
+}
