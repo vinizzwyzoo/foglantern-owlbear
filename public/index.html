@@ -2,75 +2,10 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Lantern Controller</title>
-
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #1e1e1e;
-      color: white;
-      padding: 12px;
-    }
-
-    h2 {
-      margin: 0 0 8px 0;
-      font-size: 16px;
-    }
-
-    .token {
-      font-size: 13px;
-      opacity: 0.9;
-      margin-bottom: 10px;
-    }
-
-    label {
-      font-size: 13px;
-      margin-top: 10px;
-      display: block;
-    }
-
-    input[type="range"] {
-      width: 100%;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 8px;
-      background: #3b82f6;
-      border: none;
-      color: white;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button.remove {
-      background: #dc2626;
-    }
-
-    button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-  </style>
+  <title>Lantern</title>
 </head>
-
 <body>
-  <h2>Lantern</h2>
-
-  <div class="token" id="tokenName">
-    No token selected
-  </div>
-
-  <label>Radius</label>
-  <input id="radius" type="range" min="1" max="20" value="6">
-
-  <label>Intensity</label>
-  <input id="intensity" type="range" min="0.1" max="2" step="0.1" value="1">
-
-  <button id="remove" class="remove">
-    Remove Lantern
-  </button>
+  <h3>Lantern attached</h3>
 
   <script src="https://cdn.owlbear.rodeo/sdk/latest/sdk.js"></script>
   <script src="ui.js"></script>
