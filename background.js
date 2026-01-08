@@ -8,34 +8,22 @@ OBR.onReady(() => {
 
     filter: {
       every: [
-        {
-          key: "layer",
-          operator: "==",
-          value: "CHARACTER"
-        }
+        { key: "layer", operator: "==", value: "CHARACTER" }
       ]
     },
 
-    onClick: async (context) => {
-      const tokenId = context.items[0];
+    onClick: async (ctx) => {
+      const id = ctx.items[0];
 
       await OBR.items.updateItems([{
-        id: tokenId,
+        id,
         light: {
           enabled: true,
           radius: 6,
           falloff: 0.5,
           intensity: 1
-        },
-        metadata: {
-          lantern: {
-            enabled: true
-          }
         }
       }]);
-
-      // salva token ativo para a UI
-      await OBR.storage.setItem("activeLantern", tokenId);
     }
   });
 });
