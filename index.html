@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Fog & Lanterns</title>
-  </head>
-  <body>
-    <script>
-      window.location.href = "ui.html";
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Fog & Lantern Controller</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #1e1e1e;
+      color: white;
+      padding: 12px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    label {
+      font-size: 13px;
+      display: block;
+      margin-top: 12px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 8px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Fog & Lanterns</h2>
+
+  <label>Fog Opacity</label>
+  <input id="fogOpacity" type="range" min="0" max="1" step="0.05" value="0.5">
+
+  <button id="addLantern">
+    Add Lantern to Selected Token
+  </button>
+
+  <!-- Owlbear SDK -->
+  <script src="https://cdn.owlbear.rodeo/sdk/latest/sdk.js"></script>
+  <script src="ui.js"></script>
+</body>
 </html>
